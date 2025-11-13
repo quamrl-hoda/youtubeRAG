@@ -9,6 +9,9 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
+
+
 from langchain_chroma import Chroma
 
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -148,8 +151,8 @@ def create_chunks(transcript):
 
 # function to create embedding and store it into an vector space.
 def create_vector_store(docs):
-    embedding= GoogleGenerativeAIEmbeddings(model="models/embedding-001", transport="grpc" )
-    vector_store= Chroma.from_documents(docs, embedding)
+    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+    vector_store= Chroma.from_documents(docs, embeddings)
     return vector_store
 
 
