@@ -5,7 +5,6 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 # -- end of fix --
 import streamlit as st
 from streamlit import spinner
-from streamlit.web.server.server import server_port_is_manually_set
 
 from supporting_functions import (
      extract_video_id,
